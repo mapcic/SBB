@@ -34,13 +34,13 @@ class SBBInterface(object):
 		super(SBBInterface, self).__init__()
 		self.arg = arg
 
-class SBBInterfaceWeb(object):
+class SBBInterfaceWeb(SBBInterface):
 	"""docstring for SBBInterfaceWeb"""
 	def __init__(self, arg):
 		super(SBBInterfaceWeb, self).__init__()
 		self.arg = arg
 
-class SBBInterfaceCSV(object):
+class SBBInterfaceCSV(SBBInterface):
 	"""docstring for SBBInterfaceCSV"""
 	def __init__(self, arg):
 		super(SBBInterfaceCSV, self).__init__()
