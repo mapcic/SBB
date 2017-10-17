@@ -6,7 +6,7 @@ class SBBFactory(object):
 		self.arg = arg
 
 # --------------------------------------------------------------------
-class SBB(object):
+class SBBAplication(object):
 	"""docstring for SBB"""
 	def __init__(self, arg):
 		super(SBB, self).__init__()
