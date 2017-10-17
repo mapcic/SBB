@@ -5,6 +5,10 @@ class SBBFactory(object):
 		super(SBBFactory, self).__init__()
 		self.arg = arg
 
+	@staticmethod
+	def loadLib(name):
+		import name
+
 # --------------------------------------------------------------------
 class SBBAplication(object):
 	"""docstring for SBB"""
@@ -40,6 +44,16 @@ class SBBInterfaceWeb(SBBInterface):
 		super(SBBInterfaceWeb, self).__init__()
 		self.arg = arg
 
+class SBBInterfaceWebBs4(SBBInterfaceWeb):
+		"""docstring for SBBInterfaceWebBs4"""
+		lib = 'bs4'
+
+		def __init__(self, arg):
+			SBBFactory.loadLib(self.lib)
+			super(SBBInterfaceWebBs4, self).__init__()
+			self.arg = arg
+				
+
 class SBBInterfaceCSV(SBBInterface):
 	"""docstring for SBBInterfaceCSV"""
 	def __init__(self, arg):
@@ -52,13 +66,20 @@ class SBBSource(object):
 	"""docstring for SBBSource"""
 	def __init__(self, arg):
 		super(SBBSource, self).__init__()
-		self.arg = arg
+		self.data = arg
 		
 class SBBSourceWeb(SBBSource):
 	"""docstring for SBBSourceWeb"""
 	def __init__(self, arg):
-		super(SBBSourceWeb, self).__init__()
-		self.arg = arg
+		super(SBBSourceWeb, self).__init__(arg)
+
+class SBBSourceWebBs4(SBBSourceWeb):
+	lib = 'bs4'
+
+	"""docstring for SBBSourceWebBs4"""
+	def __init__(self, arg):
+		SBBFactory.loadLib(self.lib)
+		super(SBBSourceWebBs4, self).__init__(arg)		
 
 class SBBSourceCsv(SBBSource):
 	"""docstring for SBBSourceCsv"""
