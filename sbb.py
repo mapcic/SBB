@@ -6,7 +6,7 @@ class SBBFactory(object):
 		self.arg = arg
 
 	@staticmethod
-	def loadLib(name):
+	def loadLib(*args):
 		import name
 
 # --------------------------------------------------------------------
@@ -85,4 +85,31 @@ class SBBSourceCsv(SBBSource):
 	"""docstring for SBBSourceCsv"""
 	def __init__(self, arg):
 		super(SBBSourceCsv, self).__init__()
+		self.arg = arg
+
+# --------------------------------------------------------------------
+# Date class
+
+class SBBDate(object):
+	"""docstring for SBBDate"""
+	lib = {
+		'from': '',
+		'import' : '',
+		'as': ''
+	}
+	monthRus = {
+		'янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'
+	}
+
+	def __init__(self, arg):
+		super(SBBDate, self).__init__()
+		self.arg = arg
+		
+	def fromStringToUnix():
+		pass
+
+class SBBDateVk(SBBDate):
+	"""docstring for SBBDateVk"""
+	def __init__(self, arg):
+		super(SBBDateVk, self).__init__()
 		self.arg = arg
