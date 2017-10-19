@@ -5,10 +5,6 @@ class SBBFactory(object):
 		super(SBBFactory, self).__init__()
 		self.arg = arg
 
-	@staticmethod
-	def loadLib(*args):
-		import name
-
 # --------------------------------------------------------------------
 class SBBAplication(object):
 	"""docstring for SBB"""
@@ -46,12 +42,12 @@ class SBBInterfaceWeb(SBBInterface):
 
 class SBBInterfaceWebBs4(SBBInterfaceWeb):
 		"""docstring for SBBInterfaceWebBs4"""
-		lib = 'bs4'
+	lib = 'bs4'
 
-		def __init__(self, arg):
-			SBBFactory.loadLib(self.lib)
-			super(SBBInterfaceWebBs4, self).__init__()
-			self.arg = arg
+	def __init__(self, arg):
+		SBBFactory.loadLib(self.lib)
+		super(SBBInterfaceWebBs4, self).__init__()
+		self.arg = arg
 				
 
 class SBBInterfaceCSV(SBBInterface):
@@ -92,24 +88,33 @@ class SBBSourceCsv(SBBSource):
 
 class SBBDate(object):
 	"""docstring for SBBDate"""
+	_dt = 'datetime'
+	_re = 're'
+
 	lib = {
 		'from': '',
 		'import' : '',
 		'as': ''
 	}
+
 	monthRus = {
 		'янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'
 	}
 
+	import datetime as _dt
+	import re as _re
+
 	def __init__(self, arg):
 		super(SBBDate, self).__init__()
 		self.arg = arg
-		
-	def fromStringToUnix():
-		pass
 
 class SBBDateVk(SBBDate):
 	"""docstring for SBBDateVk"""
+	vkDateRegex = _re.compile('([0-9]{1,2})\W([а-я]{3})\W([0-9]{4})\Wв\W([0-9]{1,2}):([0-9]{1,2})', _re.IGNORECASE)
+
 	def __init__(self, arg):
 		super(SBBDateVk, self).__init__()
 		self.arg = arg
+
+	def getTimeFromVk(date):
+		
