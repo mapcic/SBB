@@ -117,4 +117,24 @@ class SBBDateVk(SBBDate):
 		self.arg = arg
 
 	def getTimeFromVk(date):
-		
+
+# --------------------------------------------------------------------
+# Controllers
+
+class SBBController(object):
+	"""docstring for SBBController"""
+	def __init__(self, arg):
+		super(SBBController, self).__init__()
+		self.arg = arg
+
+class SBBControllerCommunication(SBBController):
+	"""docstring for SBBControllerCommunication"""
+	def __init__(self, arg):
+		super(SBBControllerCommunication, self).__init__()
+		self.arg = arg
+
+class SBBControllerLearn(SBBController):
+	"""docstring for SBBControllerLearn"""
+	def __init__(self, arg):
+		super(SBBControllerLearn, self).__init__()
+		self.arg = arg
