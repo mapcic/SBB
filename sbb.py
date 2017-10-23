@@ -117,9 +117,22 @@ class SBBDateVk(SBBDate):
 		self.arg = arg
 
 	def getTimeFromVk(date):
+		day, month, year, hours, minutes = self.vkDateRegex.findall(date)[0]
+		date = _dt.datetime(int(year), monthRus.index(month)+1, int(day), int(hours), int(minutes), 0)
+
+		return date
 
 # --------------------------------------------------------------------
 # Controllers
+
+class SBBControllers(object):
+	"""docstring for SBBControllers"""
+	def __init__(self, arg):
+		super(SBBControllers, self).__init__()
+		self.arg = arg
+
+# --------------------------------------------------------------------
+# Controller
 
 class SBBController(object):
 	"""docstring for SBBController"""
